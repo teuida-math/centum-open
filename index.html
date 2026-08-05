@@ -49,17 +49,69 @@
   .prog ul{list-style:none;margin-top:8px;}
   .prog ul li{color:var(--navy);font-size:13.5px;padding-left:14px;position:relative;margin-top:3px;}
   .prog ul li:before{content:"·";position:absolute;left:3px;color:var(--orange);font-weight:800;}
+  .prog .note-flex{color:var(--gray);font-size:12px;font-weight:600;margin-top:9px;background:var(--card);padding:8px 10px;border-radius:8px;}
   /* reserve CTA */
   .reserve{background:var(--white);border-radius:18px;padding:22px 18px;text-align:center;}
   .reserve .must{display:inline-block;background:var(--navy);color:#fff;font-weight:800;font-size:13px;
                  padding:7px 16px;border-radius:20px;margin-bottom:16px;}
+  /* reservation form */
+  .rform{text-align:left;margin-top:4px;}
+  .fld{margin-bottom:14px;}
+  .fld > label{display:block;font-size:13px;font-weight:800;color:var(--navy);margin-bottom:7px;}
+  .fld > label .req{color:var(--orange);margin-left:2px;}
+  .rform input[type=text],.rform input[type=tel],.rform select{
+    width:100%;font-size:15px;font-family:inherit;color:var(--navy);
+    padding:13px 14px;border:1.5px solid var(--line);border-radius:11px;background:var(--white);
+    -webkit-appearance:none;appearance:none;
+  }
+  .rform input::placeholder{color:#a9b6c9;}
+  .rform input:focus,.rform select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,100,26,.12);}
+  .rform select{
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23667891' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;
+  }
+  /* session picker */
+  .sesrow{display:flex;gap:8px;}
+  .sesrow select{flex:1;}
+  .addbtn{flex:0 0 auto;background:var(--navy);color:#fff;font-weight:800;font-size:14px;
+    border:none;border-radius:11px;padding:0 16px;cursor:pointer;font-family:inherit;}
+  .addbtn:active{background:var(--navy2);}
+  .picked{margin-top:10px;display:flex;flex-direction:column;gap:7px;}
+  .pchip{display:flex;align-items:center;gap:8px;background:#FFF1EA;border:1.5px solid #ffd9c6;
+    border-radius:11px;padding:11px 12px;}
+  .pchip .pc-main{flex:1;font-size:14px;font-weight:800;color:var(--navy);}
+  .pchip .pc-seat{font-size:11.5px;font-weight:800;color:var(--orange);}
+  .pchip .pc-x{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:#fff;color:var(--orange);
+    border:none;font-size:15px;font-weight:800;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;}
+  .picked-empty{color:#a9b6c9;font-size:12.5px;font-weight:600;text-align:center;padding:10px 0;}
+  .low{color:#d64524;}
+  /* buttons */
   .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
-       font-size:17px;font-weight:800;padding:16px;border-radius:14px;text-decoration:none;margin-top:10px;}
+       font-size:17px;font-weight:800;padding:16px;border-radius:14px;text-decoration:none;margin-top:10px;
+       border:none;font-family:inherit;cursor:pointer;}
+  .btn-submit{background:var(--orange);color:#fff;box-shadow:0 6px 16px rgba(255,100,26,.35);margin-top:6px;}
+  .btn-submit:disabled{opacity:.55;cursor:default;box-shadow:none;}
   .btn-call{background:var(--orange);color:#fff;box-shadow:0 6px 16px rgba(255,100,26,.35);}
   .btn-sms{background:#FFF1EA;color:var(--orange);}
-  .btn-kakao{background:#FEE500;color:#3A1D1D;}
+  /* alt divider */
+  .altdiv{display:flex;align-items:center;gap:10px;margin:18px 2px 8px;color:#a9b6c9;font-size:12px;font-weight:700;}
+  .altdiv::before,.altdiv::after{content:"";flex:1;height:1px;background:var(--line);}
+  .altrow{display:flex;gap:8px;}
+  .altrow .btn{margin-top:0;font-size:15px;padding:13px;}
   .note{margin-top:16px;color:var(--gray);font-size:12.5px;line-height:1.6;
         background:var(--card);border-radius:10px;padding:12px;}
+  .consent{margin-top:12px;color:#8496ab;font-size:11.5px;line-height:1.55;text-align:center;}
+  .err{display:none;color:#d64524;font-size:12.5px;font-weight:700;margin-top:10px;text-align:center;}
+  /* success state */
+  .done{display:none;text-align:center;padding:8px 4px 4px;}
+  .done .check{width:58px;height:58px;border-radius:50%;background:#FFF1EA;color:var(--orange);
+    font-size:30px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+  .done h4{font-size:19px;font-weight:800;color:var(--navy);margin-bottom:10px;}
+  .done .sumbox{background:var(--card);border-radius:11px;padding:12px 14px;text-align:left;margin:0 auto 12px;max-width:320px;}
+  .done .sumbox .sl{font-size:13px;color:var(--navy);font-weight:700;padding:3px 0;}
+  .done p{font-size:13px;color:var(--gray);line-height:1.65;}
+  .done .again{margin-top:16px;background:none;border:none;color:var(--gray);font-size:12.5px;
+    font-weight:700;text-decoration:underline;cursor:pointer;font-family:inherit;}
   /* info */
   .info{background:var(--white);border-radius:16px;padding:18px;}
   .info .item{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);}
@@ -87,7 +139,7 @@
   <div class="hero">
     <h1>오픈 기념 <span class="orange">무료 특강</span></h1>
     <div class="dates"><span>8/15</span><span>8/16</span><span>8/17</span></div>
-    <p class="pick">세 날짜 중 선택 · 소수 정원 · 사전예약 필수</p>
+    <p class="pick">세 날짜 중 필요한 날 선택 · 소수 정원 · 사전예약 필수</p>
   </div>
 
   <section>
@@ -109,18 +161,79 @@
         <li>실전 응시 · 시험 직후 핵심 해설</li>
         <li>취약 유형 집중 점검</li>
       </ul>
+      <p class="note-flex">💡 중1·중2 학생도 <b>예비 고1 모의고사</b> 응시가 가능합니다. 원하는 세션을 자유롭게 선택하세요.</p>
     </div>
   </section>
 
   <section>
     <div class="stitle"><span class="d">—</span> <b>예약하기</b> <span class="d">—</span></div>
     <div class="reserve">
-      <span class="must">소수 정원 · 사전예약 필수</span>
-      <a class="btn btn-call" href="tel:01039344479">📞 전화로 예약하기</a>
-      <a class="btn btn-sms" href="sms:01039344479">💬 문자로 예약 문의</a>
+      <span class="must">각 세션 소수 정원 · 사전예약 필수</span>
+
+      <!-- 예약 폼 -->
+      <form class="rform" id="resForm" novalidate>
+        <div class="fld">
+          <label for="f_student">학생 이름<span class="req">*</span></label>
+          <input type="text" id="f_student" name="student" placeholder="예) 홍길동" autocomplete="name" required />
+        </div>
+
+        <div class="fld">
+          <label for="f_school">현재 학교<span class="req">*</span></label>
+          <input type="text" id="f_school" name="school" placeholder="예) 센텀중학교" required />
+        </div>
+
+        <div class="fld">
+          <label for="f_grade">현재 학년<span class="req">*</span></label>
+          <select id="f_grade" name="grade" required>
+            <option value="" disabled selected>학년 선택</option>
+            <option value="중1">중1</option>
+            <option value="중2">중2</option>
+            <option value="예비 고1">예비 고1 (중3)</option>
+            <option value="기타">기타</option>
+          </select>
+        </div>
+
+        <div class="fld">
+          <label for="sessionSelect">신청 세션<span class="req">*</span> <span style="font-weight:600;color:var(--gray);">(여러 개 선택 가능)</span></label>
+          <div class="sesrow">
+            <select id="sessionSelect">
+              <option value="" disabled selected>날짜 · 세션 선택</option>
+            </select>
+            <button type="button" class="addbtn" id="addBtn">담기</button>
+          </div>
+          <div class="picked" id="picked">
+            <div class="picked-empty" id="pickedEmpty">선택한 세션이 여기에 표시됩니다.</div>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label for="f_phone">학부모 연락처<span class="req">*</span></label>
+          <input type="tel" id="f_phone" name="phone" placeholder="예) 010-1234-5678" inputmode="numeric" autocomplete="tel" required />
+        </div>
+
+        <button type="submit" class="btn btn-submit" id="submitBtn">예약 신청하기</button>
+        <p class="err" id="formErr"></p>
+        <p class="consent">예약 신청 시 특강 안내 목적의 개인정보(이름·학교·연락처) 수집·이용에 동의하는 것으로 간주되며, 특강 종료 후 파기됩니다.</p>
+      </form>
+
+      <!-- 제출 완료 화면 -->
+      <div class="done" id="resDone">
+        <div class="check">✓</div>
+        <h4>예약 신청이 접수되었습니다</h4>
+        <div class="sumbox" id="doneSummary"></div>
+        <p>신청해 주셔서 감사합니다.<br>확인 후 <b>학부모님 연락처로 개별 안내</b>드리겠습니다.<br>급하신 경우 <a href="tel:01039344479" style="color:var(--orange);font-weight:800;text-decoration:none;">010-3934-4479</a> 로 연락 주세요.</p>
+        <button type="button" class="again" id="againBtn">다른 학생 · 세션 추가 신청하기</button>
+      </div>
+
+      <!-- 대체 연락 수단 -->
+      <div class="altdiv">전화·문자로도 예약 가능</div>
+      <div class="altrow">
+        <a class="btn btn-call" href="tel:01039344479">📞 전화 예약</a>
+        <a class="btn btn-sms" href="sms:01039344479">💬 문자 문의</a>
+      </div>
       <p class="note">
-        온라인 예약 폼은 곧 오픈됩니다. 지금은 <b>전화 또는 문자</b>로 예약해 주세요.<br>
-        예약 시 <b>희망 날짜(8/15·16·17)</b> 와 <b>학생 학년</b> 을 함께 남겨주시면 빠르게 안내드립니다.
+        온라인 예약이 어려우시면 <b>전화 또는 문자</b>로도 예약하실 수 있습니다.<br>
+        문자 예약 시 <b>학생 이름·학년·희망 날짜(8/15·16·17)</b>를 함께 남겨주세요.
       </p>
     </div>
   </section>
@@ -145,5 +258,236 @@
   </footer>
 
 </div>
+
+<script>
+/* =========================================================
+   트이다 센텀점 · 예약 폼 (구글시트 연동, 정원관리)
+   ---------------------------------------------------------
+   ★ 아래 SCRIPT_URL 을 본인 Google Apps Script 웹앱 주소로 바꾸세요.
+     (안내대로 Apps Script 배포 후 나오는 .../exec 주소)
+   ★ 정원(12) 은 Apps Script 쪽 CAP 값과 반드시 동일하게 두세요.
+   ========================================================= */
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzAodJ3Fh_q_25jvpw9qHx9191cKq6Nzdmk3DaftHUodUJiPJqtIqQFR0ukaCptC78DKQ/exec";
+var CAP = 12;   // 세션별 정원 (표시용 · 실제 마감은 Apps Script가 판단)
+var LOW = 5;    // 이 수 이하로 남으면 '남은 자리' 자동 표시
+
+/* 9개 세션 정의 : 날짜 3 × 트랙 3 */
+var DATES = ["8/15", "8/16", "8/17"];
+var TRACKS = [
+  { id: "중1",     label: "중1 · 중간고사 미리보기" },
+  { id: "중2",     label: "중2 · 중간고사 미리보기" },
+  { id: "예비고1", label: "예비고1 · 고교 미리보기" }
+];
+function keyOf(date, trackId){ return date + "__" + trackId; }
+function labelOf(k){
+  var p = k.split("__"), d = p[0], t = p[1];
+  var tr = TRACKS.filter(function(x){ return x.id === t; })[0];
+  return d + " · " + (tr ? tr.label : t);
+}
+
+(function(){
+  var form      = document.getElementById('resForm');
+  var doneBox   = document.getElementById('resDone');
+  var doneSum   = document.getElementById('doneSummary');
+  var btn       = document.getElementById('submitBtn');
+  var errEl     = document.getElementById('formErr');
+  var againBtn  = document.getElementById('againBtn');
+  var sel       = document.getElementById('sessionSelect');
+  var addBtn    = document.getElementById('addBtn');
+  var pickedBox = document.getElementById('picked');
+  var pickedEmpty = document.getElementById('pickedEmpty');
+  var phone     = document.getElementById('f_phone');
+
+  var counts = {};        // { key: 신청수 }  (status로 채움)
+  var selected = [];      // 선택한 세션 key 배열
+
+  /* ---------- JSONP ---------- */
+  var jn = 0;
+  function jsonp(params){
+    return new Promise(function(resolve, reject){
+      if(SCRIPT_URL.indexOf('PASTE_YOUR') === 0){ reject(new Error('no-url')); return; }
+      jn += 1;
+      var cb = 'teuidaCb_' + jn;
+      var s = document.createElement('script');
+      var done = false;
+      var to = setTimeout(function(){ if(!done){ cleanup(); reject(new Error('timeout')); } }, 12000);
+      function cleanup(){ done = true; clearTimeout(to); try{ delete window[cb]; }catch(e){ window[cb] = undefined; } if(s.parentNode) s.parentNode.removeChild(s); }
+      window[cb] = function(data){ if(done) return; cleanup(); resolve(data); };
+      var q = ['callback=' + cb];
+      for(var k in params){ if(params.hasOwnProperty(k)) q.push(encodeURIComponent(k) + '=' + encodeURIComponent(params[k])); }
+      s.src = SCRIPT_URL + '?' + q.join('&');
+      s.onerror = function(){ if(!done){ cleanup(); reject(new Error('network')); } };
+      document.head.appendChild(s);
+    });
+  }
+
+  /* ---------- 남은 자리 ---------- */
+  function remainOf(k){
+    var used = counts[k] || 0;
+    var r = CAP - used;
+    return r < 0 ? 0 : r;
+  }
+  function seatText(k){
+    var r = remainOf(k);
+    if(r <= 0) return "마감";
+    if(r <= LOW) return r + "자리 남음";
+    return "";
+  }
+
+  /* ---------- 드롭다운 채우기 ---------- */
+  function buildSelect(){
+    // 기존 optgroup 제거
+    while(sel.options.length > 1){ sel.remove(1); }
+    DATES.forEach(function(d){
+      var og = document.createElement('optgroup');
+      og.label = d;
+      TRACKS.forEach(function(tr){
+        var k = keyOf(d, tr.id);
+        var r = remainOf(k);
+        var o = document.createElement('option');
+        o.value = k;
+        var suffix = "";
+        if(r <= 0) suffix = "  — 마감";
+        else if(r <= LOW) suffix = "  — " + r + "자리 남음";
+        o.textContent = tr.label + suffix;
+        if(r <= 0 || selected.indexOf(k) >= 0) o.disabled = true;
+        og.appendChild(o);
+      });
+      sel.appendChild(og);
+    });
+    sel.value = "";
+  }
+
+  /* ---------- 선택 칩 ---------- */
+  function renderPicked(){
+    // 칩 다시 그림
+    var chips = pickedBox.querySelectorAll('.pchip');
+    chips.forEach(function(c){ c.remove(); });
+    if(selected.length === 0){
+      pickedEmpty.style.display = 'block';
+    } else {
+      pickedEmpty.style.display = 'none';
+      selected.forEach(function(k){
+        var row = document.createElement('div');
+        row.className = 'pchip';
+        var st = seatText(k);
+        row.innerHTML =
+          '<span class="pc-main">' + labelOf(k) + '</span>' +
+          (st ? '<span class="pc-seat' + (st==="마감" ? " low" : "") + '">' + st + '</span>' : '') +
+          '<button type="button" class="pc-x" aria-label="삭제">×</button>';
+        row.querySelector('.pc-x').addEventListener('click', function(){
+          selected = selected.filter(function(x){ return x !== k; });
+          renderPicked(); buildSelect();
+        });
+        pickedBox.appendChild(row);
+      });
+    }
+  }
+
+  function addSelected(){
+    var k = sel.value;
+    if(!k) return;
+    if(remainOf(k) <= 0){ showErr('선택하신 세션은 마감되었습니다.'); return; }
+    if(selected.indexOf(k) < 0){ selected.push(k); }
+    hideErr();
+    renderPicked(); buildSelect();
+  }
+  addBtn.addEventListener('click', addSelected);
+
+  /* ---------- 상태 새로고침 ---------- */
+  function refreshStatus(){
+    jsonp({ action: 'status' }).then(function(res){
+      if(res && res.counts){ counts = res.counts; }
+      if(res && res.cap){ CAP = res.cap; }
+      buildSelect(); renderPicked();
+    }).catch(function(){
+      // URL 미설정/네트워크 실패 시에도 드롭다운은 보이게 (자리표시만 생략)
+      buildSelect(); renderPicked();
+    });
+  }
+
+  /* ---------- 오류 표시 ---------- */
+  function showErr(msg){ errEl.textContent = msg; errEl.style.display = 'block'; }
+  function hideErr(){ errEl.style.display = 'none'; }
+
+  /* ---------- 연락처 자동 하이픈 ---------- */
+  phone.addEventListener('input', function(){
+    var v = phone.value.replace(/[^0-9]/g,'').slice(0,11);
+    if(v.length < 4){ phone.value = v; }
+    else if(v.length < 8){ phone.value = v.slice(0,3)+'-'+v.slice(3); }
+    else { phone.value = v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7); }
+  });
+
+  /* ---------- 제출 ---------- */
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    hideErr();
+
+    var student = form.student.value.trim();
+    var school  = form.school.value.trim();
+    var grade   = form.grade.value;
+    var phoneV  = phone.value.trim();
+
+    if(!student || !school || !grade){ showErr('이름·학교·학년을 입력해 주세요.'); return; }
+    if(selected.length === 0){ showErr('신청할 세션을 1개 이상 선택해 주세요.'); return; }
+    if(phoneV.replace(/[^0-9]/g,'').length < 10){ showErr('학부모 연락처를 정확히 입력해 주세요.'); return; }
+    if(SCRIPT_URL.indexOf('PASTE_YOUR') === 0){
+      showErr('예약 폼이 아직 연결되지 않았습니다. 전화·문자로 예약해 주세요.'); return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = '신청 접수 중…';
+
+    jsonp({
+      action: 'reserve',
+      student: student, school: school, grade: grade, phone: phoneV,
+      sessions: selected.join(',')
+    }).then(function(res){
+      if(res && res.counts){ counts = res.counts; }
+      var booked = (res && res.booked) || [];
+      var full   = (res && res.full) || [];
+
+      if(booked.length === 0){
+        // 전부 마감된 경우
+        btn.disabled = false; btn.textContent = '예약 신청하기';
+        buildSelect(); renderPicked();
+        showErr('선택하신 세션이 방금 마감되었습니다. 남은 자리를 다시 확인해 주세요.');
+        selected = full.slice(); renderPicked(); buildSelect();
+        return;
+      }
+
+      // 완료 화면
+      var html = '';
+      booked.forEach(function(k){ html += '<div class="sl">✅ ' + labelOf(k) + '</div>'; });
+      full.forEach(function(k){ html += '<div class="sl" style="color:#d64524;">⚠️ ' + labelOf(k) + ' — 방금 마감</div>'; });
+      doneSum.innerHTML = html;
+      form.style.display = 'none';
+      doneBox.style.display = 'block';
+      window.scrollTo({ top: doneBox.getBoundingClientRect().top + window.pageYOffset - 80, behavior:'smooth' });
+    }).catch(function(err){
+      btn.disabled = false; btn.textContent = '예약 신청하기';
+      showErr('전송에 실패했습니다. 잠시 후 다시 시도하거나 전화·문자로 예약해 주세요.');
+    });
+  });
+
+  /* ---------- 다시 신청 ---------- */
+  againBtn.addEventListener('click', function(){
+    form.reset();
+    selected = [];
+    form.style.display = 'block';
+    doneBox.style.display = 'none';
+    btn.disabled = false;
+    btn.textContent = '예약 신청하기';
+    hideErr();
+    refreshStatus();
+    window.scrollTo({ top: form.getBoundingClientRect().top + window.pageYOffset - 80, behavior:'smooth' });
+  });
+
+  /* ---------- 초기화 ---------- */
+  buildSelect();
+  renderPicked();
+  refreshStatus();
+})();
+</script>
 </body>
 </html>

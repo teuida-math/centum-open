@@ -336,8 +336,8 @@ function labelOf(k){
 
   /* ---------- 드롭다운 채우기 ---------- */
   function buildSelect(){
-    // 기존 optgroup 제거
-    while(sel.options.length > 1){ sel.remove(1); }
+    // 기존 항목(옵션+그룹) 제거 — 첫 placeholder 옵션만 남김
+    while(sel.children.length > 1){ sel.removeChild(sel.lastElementChild); }
     DATES.forEach(function(d){
       var og = document.createElement('optgroup');
       og.label = d;

@@ -211,6 +211,11 @@
           <input type="tel" id="f_phone" name="phone" placeholder="예) 010-1234-5678" inputmode="numeric" autocomplete="tel" required />
         </div>
 
+        <div class="fld">
+          <label for="f_sphone">학생 연락처<span class="req">*</span></label>
+          <input type="tel" id="f_sphone" name="studentPhone" placeholder="예) 010-1234-5678" inputmode="numeric" required />
+        </div>
+
         <button type="submit" class="btn btn-submit" id="submitBtn">예약 신청하기</button>
         <p class="err" id="formErr"></p>
         <p class="consent">예약 신청 시 특강 안내 목적의 개인정보(이름·학교·연락처) 수집·이용에 동의하는 것으로 간주되며, 특강 종료 후 파기됩니다.</p>
@@ -297,6 +302,7 @@ function labelOf(k){
   var pickedBox = document.getElementById('picked');
   var pickedEmpty = document.getElementById('pickedEmpty');
   var phone     = document.getElementById('f_phone');
+  var sphone    = document.getElementById('f_sphone');
 
   var counts = {};        // { key: 신청수 }  (status로 채움)
   var selected = [];      // 선택한 세션 key 배열
@@ -411,12 +417,16 @@ function labelOf(k){
   function hideErr(){ errEl.style.display = 'none'; }
 
   /* ---------- 연락처 자동 하이픈 ---------- */
-  phone.addEventListener('input', function(){
-    var v = phone.value.replace(/[^0-9]/g,'').slice(0,11);
-    if(v.length < 4){ phone.value = v; }
-    else if(v.length < 8){ phone.value = v.slice(0,3)+'-'+v.slice(3); }
-    else { phone.value = v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7); }
-  });
+  function attachHyphen(el){
+    el.addEventListener('input', function(){
+      var v = el.value.replace(/[^0-9]/g,'').slice(0,11);
+      if(v.length < 4){ el.value = v; }
+      else if(v.length < 8){ el.value = v.slice(0,3)+'-'+v.slice(3); }
+      else { el.value = v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7); }
+    });
+  }
+  attachHyphen(phone);
+  attachHyphen(sphone);
 
   /* ---------- 제출 ---------- */
   form.addEventListener('submit', function(e){
@@ -427,10 +437,12 @@ function labelOf(k){
     var school  = form.school.value.trim();
     var grade   = form.grade.value;
     var phoneV  = phone.value.trim();
+    var sphoneV = sphone.value.trim();
 
     if(!student || !school || !grade){ showErr('이름·학교·학년을 입력해 주세요.'); return; }
     if(selected.length === 0){ showErr('신청할 세션을 1개 이상 선택해 주세요.'); return; }
     if(phoneV.replace(/[^0-9]/g,'').length < 10){ showErr('학부모 연락처를 정확히 입력해 주세요.'); return; }
+    if(sphoneV.replace(/[^0-9]/g,'').length < 10){ showErr('학생 연락처를 정확히 입력해 주세요.'); return; }
     if(SCRIPT_URL.indexOf('PASTE_YOUR') === 0){
       showErr('예약 폼이 아직 연결되지 않았습니다. 전화·문자로 예약해 주세요.'); return;
     }
@@ -440,7 +452,7 @@ function labelOf(k){
 
     jsonp({
       action: 'reserve',
-      student: student, school: school, grade: grade, phone: phoneV,
+      student: student, school: school, grade: grade, phone: phoneV, studentPhone: sphoneV,
       sessions: selected.join(',')
     }).then(function(res){
       if(res && res.counts){ counts = res.counts; }

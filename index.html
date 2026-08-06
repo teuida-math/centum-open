@@ -50,6 +50,18 @@
   .prog ul li{color:var(--navy);font-size:13.5px;padding-left:14px;position:relative;margin-top:3px;}
   .prog ul li:before{content:"·";position:absolute;left:3px;color:var(--orange);font-weight:800;}
   .prog .note-flex{color:var(--gray);font-size:12px;font-weight:600;margin-top:9px;background:var(--card);padding:8px 10px;border-radius:8px;}
+  /* schedule (특강 시간) */
+  .sched{background:var(--white);border-radius:16px;padding:8px 16px;margin-bottom:10px;}
+  .sched .srow{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);}
+  .sched .srow:last-child{border-bottom:0;}
+  .sched .sgrade{background:var(--navy);color:#fff;font-weight:800;font-size:13px;padding:6px 0;
+    width:64px;flex:0 0 auto;text-align:center;border-radius:9px;}
+  .sched .stime{flex:1;color:var(--navy);font-weight:800;font-size:16px;}
+  .sched .sdur{background:#FFF1EA;color:var(--orange);font-weight:800;font-size:12px;
+    padding:5px 10px;border-radius:8px;white-space:nowrap;flex:0 0 auto;}
+  .sched-note{color:var(--gray);font-size:12.5px;font-weight:600;text-align:center;
+    background:var(--card);border-radius:10px;padding:11px 12px;line-height:1.55;}
+  .sched-note b{color:var(--orange);}
   /* reserve CTA */
   .reserve{background:var(--white);border-radius:18px;padding:22px 18px;text-align:center;}
   .reserve .must{display:inline-block;background:var(--navy);color:#fff;font-weight:800;font-size:13px;
@@ -163,6 +175,16 @@
       </ul>
       <p class="note-flex">💡 중1·중2 학생도 <b>예비 고1 모의고사</b> 응시가 가능합니다. 원하는 세션을 자유롭게 선택하세요.</p>
     </div>
+  </section>
+
+  <section>
+    <div class="stitle"><b>특강 시간</b></div>
+    <div class="sched">
+      <div class="srow"><div class="sgrade">중1</div><div class="stime">10:00 – 11:30</div><span class="sdur">1h 30m</span></div>
+      <div class="srow"><div class="sgrade">중2</div><div class="stime">12:00 – 13:30</div><span class="sdur">1h 30m</span></div>
+      <div class="srow"><div class="sgrade">예비 고1</div><div class="stime">13:30 – 15:30</div><span class="sdur">2h</span></div>
+    </div>
+    <p class="sched-note"><b>8/15 · 8/16 · 8/17</b> 동일하게 진행됩니다 · 희망하시는 날짜를 선택하세요</p>
   </section>
 
   <section>
